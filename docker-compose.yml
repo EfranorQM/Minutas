@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"   # Exponemos el puerto 8080
+    volumes:
+      - .:/app        # Sincroniza el código local con /app en el contenedor
+      - /app/node_modules  # Evita sincronizar node_modules (conflictos)
+    environment:
+      - NODE_ENV=development
